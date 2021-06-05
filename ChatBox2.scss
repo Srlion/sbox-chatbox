@@ -1,0 +1,216 @@
+﻿
+ChatBox2 {
+    border-radius: 8px;
+    position: absolute;
+    bottom: 200px;
+    left: 100px;
+    z-index: 100;
+    width: 480px;
+    height: 250px;
+    font-family: Poppins;
+    font-size: 13px;
+    background-color: rgba(18, 18, 18, 0);
+    transition: background-color .2s linear;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    padding-left: 5px;
+    padding-right: 5px;
+
+    .header {
+        opacity: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        height: 42px;
+        background-color: rgb(31, 31, 31);
+        align-items: center;
+        width: 102.2%;
+        margin-left: -5px;
+        //margin-right: 5px;
+        padding-right: 10px;
+        transition: opacity 0.2s linear;
+
+        .title {
+            left: 6px;
+            color: #cecece;
+            font-family: "Poppins";
+            font-size: 18px;
+            text-shadow: 1px 1px 3px rgba( black, 0.4 );
+        }
+    }
+
+    .body {
+        transition: background-color .2s linear;
+        border-radius: 4px;
+        background-color: rgba(29, 29, 29, 0);
+        height: 100%;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    textentry {
+        opacity: 0;
+        cursor: text;
+        border-radius: 4px;
+        background-color: rgb(29, 29, 29);
+        height: 36px;
+        width: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: white;
+        flex-shrink: 0;
+        flex-grow: 0;
+        align-items: center;
+        padding-left: 10px;
+        transition: opacity 0.2s linear;
+        overflow: hidden;
+
+        button {
+            cursor: pointer;
+            //background-color: black;
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            right: 5;
+            align-items: center;
+            text-align: center;
+            font-size: 22px;
+        }
+    }
+
+    &.open {
+        background-color: rgb(18, 18, 18);
+        pointer-events: all;
+
+        .header {
+            opacity: 1;
+        }
+
+        textentry {
+            opacity: 1;
+        }
+
+        .body {
+            background-color: rgb(29, 29, 29);
+        }
+    }
+
+    .emojis_menu {
+        background-color: rgb(23, 23, 23);
+        position: absolute;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 1);
+        right: 5px;
+        bottom: 45px;
+        height: 260px;
+        width: 272px;
+        //flex-wrap: nowrap;
+        flex-direction: column;
+        display: flex;
+        overflow: auto;
+        padding: 5px;
+
+        .emojis_body {
+            //position: absolute;
+            background-color: rgb(33, 33, 33);
+            height: 100%;
+            width: 100%;
+        }
+
+        .emojis_select {
+            flex-shrink: 0;
+            flex-grow: 0;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            margin: -5px;
+            margin-top: 5px;
+
+            button {
+                cursor: pointer;
+                //background-color: black;
+                width: 34px;
+                height: 34px;
+                font-size: 24px;
+                align-self: flex-end;
+                align-items: center;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.canvas {
+    flex-direction: column;
+    overflow: scroll;
+    flex-grow: 1;
+
+    chatentry {
+        //background-color: black;
+        color: white;
+        transition: all 0.2s ease-out, opacity 0.2s linear;
+        opacity: 1;
+        flex-shrink: 0;
+        flex-grow: 0;
+        padding-left: 5px;
+        min-height: 32px;
+        max-width: 100%;
+        align-items: center;
+        transform: scale( 1 );
+        margin-top: 3px;
+        margin-bottom: 3px;
+        text-shadow: 0 0 10px #000;
+        //border-top: 2px solid rgba(0 0 0 0.5);
+
+        &.hidden {
+            opacity: 0;
+        }
+
+        &:intro {
+            max-height: 0px;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            opacity: 0;
+            transform: scale( 0 );
+        }
+
+        image {
+            width: 32px;
+            height: 32px;
+            //min-height: 32px;
+            //min-width: 32px;
+            border-radius: 100px;
+            //position: absolute;
+            flex-shrink: 0;
+        }
+
+        .name {
+            padding-left: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            color: rgb(65, 185, 255);
+            //	background-color: green;
+            flex-shrink: 0;
+        }
+
+        .message {
+            padding-left: 5px;
+            color: #ccc;
+            font-size: 14px;
+            //	background-color: red;
+            flex-grow: 0;
+        }
+
+        &.noname .name {
+            display: none;
+        }
+
+        &.noavatar image {
+            display: none;
+        }
+    }
+
+    &.open {
+        opacity: 1;
+    }
+}
